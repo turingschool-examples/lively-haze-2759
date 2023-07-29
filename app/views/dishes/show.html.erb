@@ -15,3 +15,12 @@
 <h2>Chef:</h2>
 <p><%= @dish.chef.name %></p>
 
+<h2>Add ingredient</h2>
+<section id="add_ingredient">
+  <%= form_with model: @dish, class: "dish_ingredient_form" do |f| %>
+    <%= f.label :add_ingredient_id %>
+    <%= f.number_field :add_ingredient_id %>
+    <%= f.submit %>
+  <% end %>
+</section>
+
