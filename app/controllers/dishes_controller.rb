@@ -3,9 +3,7 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])
   end
 
-  def edit
-    @dish = Dish.find(params[:id])
-  end
+  def edit; end
 
   def update
     dish = Dish.find(params[:id])
