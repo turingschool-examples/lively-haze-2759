@@ -6,5 +6,8 @@ Rails.application.routes.draw do
 
   resources :dishes, only: [:show, :edit, :update]
 
-  
+  resources :chefs do
+    resources :ingredients, only: [:index], controller: 'chefs_ingredients', as: :ingredients
+  end
+
 end
