@@ -11,7 +11,33 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
-#
+def test_data
+  @chef_1 = Chef.create!(name: "Pierre Le Plupe")
+  @chef_2 = Chef.create!(name: "Gordon Ramsay")
+  @chef_3 = Chef.create!(name: "Ronald McDonald")
+
+  @dish_1 = @chef_1.dishes.create!(name: "Soupe du jour: Vegetable", description: "Delicious, splendide")
+  @dish_2 = @chef_1.dishes.create!(name: "Soupe du jour: Beef", description: "Delicious, splendide")
+  @dish_3 = @chef_2.dishes.create!(name: "Beef Wellington: undercooked", description: "Where is the fucking lamb sauce..")
+  @dish_4 = @chef_2.dishes.create!(name: "Scallops: raw", description: "Where is the fucking lamb sauce..")
+  @dish_5 = @chef_3.dishes.create!(name: "Big Mac", description: "buhdahdah-dahdaaaah")
+  @dish_6 = @chef_3.dishes.create!(name: "Spicy McChiken", description: "buhdahdah-dahdaaaah")
+
+  @ingredient_1 = Ingredient.create!(name: "Beef", calories: 800)
+  @ingredient_2 = Ingredient.create!(name: "Carrot", calories: 60)
+  @ingredient_3 = Ingredient.create!(name: "Onion", calories: 70)
+  @ingredient_4 = Ingredient.create!(name: "Chicken", calories: 500)
+  @ingredient_5 = Ingredient.create!(name: "Fish", calories: 450)
+  @ingredient_6 = Ingredient.create!(name: "Salt", calories: 10)
+  
+
+  @dish_1.ingredients.push(@ingredient_2, @ingredient_3, @ingredient_6)
+  @dish_2.ingredients.push(@ingredient_1, @ingredient_2, @ingredient_6)
+  @dish_3.ingredients.push(@ingredient_1, @ingredient_3, @ingredient_6)
+  @dish_4.ingredients.push(@ingredient_5, @ingredient_6)
+  @dish_5.ingredients.push(@ingredient_1, @ingredient_3, @ingredient_6)
+  @dish_6.ingredients.push(@ingredient_4, @ingredient_6)
+end
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
