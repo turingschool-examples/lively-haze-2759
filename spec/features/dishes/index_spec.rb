@@ -50,6 +50,13 @@ RSpec.describe 'Dishes Index' do
     DishesIngredient.create(dish_id: @dish8.id, ingredient_id: @ingredient10.id)
   end
 
+  it 'shows links to welcome, chefs, and ingredients index pages' do
+    visit dishes_path
+    expect(page).to have_link('Welcome', href: root_path)
+    expect(page).to have_link('Dishes', href: dishes_path)
+    expect(page).to have_link('Chefs', href: chefs_path)
+  end
+
   it 'shows each dish with a link to its show page' do
     visit dishes_path
     Dish.all.each do |dish|
