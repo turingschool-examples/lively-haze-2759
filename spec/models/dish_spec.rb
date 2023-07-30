@@ -13,4 +13,20 @@ RSpec.describe Dish, type: :model do
       it {should have_many(:ingredients).through(:dish_ingredients)}
   end
 
+  describe "#total_calorie_count" do
+    it "calculates the total calories for a given dish" do
+      chef = Chef.create!(name: "Gordon Ramsey")
+      dish = chef.dishes.create!(name: "Tasty Dish", description: "Very Tasty")
+
+      ingredient_1 = Ingredient.create!(name: "pasta", calories: 200)
+      ingredient_2 = Ingredient.create!(name: "chicken", calories: 100)
+      ingredient_3 = Ingredient.create!(name: "pesto", calories: 100)
+
+      dish.ingredients << ingredient_1
+      dish.ingredients << ingredient_2
+      dish.ingredients << ingredient_3
+
+      expect(dish.total_calorie_count).to eq(400)
+    end
+  end
 end
