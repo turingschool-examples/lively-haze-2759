@@ -1,0 +1,20 @@
+<table class="show-table">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Ingredients</th>
+    <th>Calorie Count</th>
+    <th>Chef</th>
+  </tr>
+  <tr>
+    <td><%= @dish.name %></td>
+    <td><%= @dish.description %></td>
+    <td>
+      <% @dish.ingredients.each do |ingredient| %>
+        <%= ingredient.name %><br>
+      <% end %>
+    </td>
+    <td><%= @dish.calorie_count %></td>
+    <td><%= @dish.chef.name %></td>
+  </tr>
+</table>
