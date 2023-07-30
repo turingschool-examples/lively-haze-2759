@@ -14,3 +14,9 @@
 
   <p> Chef: <%= @dish.chef.name %></p>
 
+  <%= form_with model: @dish, local: true do |form| %>
+  <label for="dish_ingredient_id">Add Ingredient:</label>
+  <%= form.text_field :ingredient_id, id: "dish_ingredient_id" %>
+  <%= form.submit "Submit" %>
+<% end %>
+
