@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: 'welcome#index'
 
-  resources :chefs, only: [:show] do
+  resources :chefs, only: %i[index show] do
     resources :ingredients, only: [:index], controller: 'chefs/ingredients'
   end
 
-  resources :dishes, only: [:show] do
+  resources :dishes, only: %i[index show] do
     resources :ingredients, only: [:create], controller: 'dishes/ingredients'
   end
 end
