@@ -1,0 +1,2 @@
+class DishesIngredientsController < ApplicationController
+end
