@@ -1,0 +1,19 @@
+<h1><%= @dish_indiv.name%></h1>
+<p>description: <%= @dish_indiv.description %></p>
+<% @dish_indiv.ingredients.each do |ingredient| %>
+  <h3><%= ingredient.name %></h3>
+  <p>calories: <%= ingredient.calories %></p>
+
+<% end %>
+<p>total_calories: <%= @total_calories  %></p>
+
+<p>This dish is created by: <%= @dish_indiv.chef.name%></p>
+
+<p>Add new ingredient:</p>
+<%= form_with model: @ingredient, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :calories %>
+  <%= form.text_field :calories %>
+  <%= form.submit %>
+<% end %>
