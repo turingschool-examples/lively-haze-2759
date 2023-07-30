@@ -14,7 +14,8 @@ class Chef < ApplicationRecord
    def top_3_ingredients
       Ingredient.joins(:dishes)
          .where(dishes: { chef_id: id })
-         .group(:id).order('COUNT(dishes.id) DESC')
+         .group(:id)
+         .order('COUNT(dishes.id) DESC')
          .limit(3)
          .pluck(:name)
     end
