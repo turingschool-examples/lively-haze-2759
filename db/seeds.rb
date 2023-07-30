@@ -1,7 +1,50 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# Create chefs
+gordon = Chef.create(name: 'Gordon Ramsey')
+bobby = Chef.create(name: 'Bobby Flay')
+guy = Chef.create(name: 'Guy Fieri')
+rachael = Chef.create(name: 'Rachael Ray')
+
+# Create dishes
+pasta = Dish.create(name: 'Pasta', description: 'Italian dish', chef: gordon)
+roast_chicken = Dish.create(name: 'Roast Chicken and Potatoes', description: 'American dish', chef: gordon)
+sweet_and_sour_chicken = Dish.create(name: 'Sweet and Sour Chicken', description: 'Chinese dish', chef: bobby)
+chicken_parm = Dish.create(name: 'Chicken Parm', description: 'Italian dish', chef: bobby)
+pizza = Dish.create(name: 'Pizza', description: 'Italian dish', chef: guy)
+burger = Dish.create(name: 'Burger', description: 'American dish', chef: guy)
+chicken_cashews = Dish.create(name: 'Chicken and Cashews', description: 'Chinese dish', chef: rachael)
+chicken_tacos = Dish.create(name: 'Chicken Tacos', description: 'Mexican dish', chef: rachael)
+
+# Create ingredients
+spaghetti = Ingredient.create(name: 'Spaghetti', calories: 100)
+tomato_sauce = Ingredient.create(name: 'Tomato Sauce', calories: 200)
+chicken = Ingredient.create(name: 'Chicken', calories: 200)
+red_potatoes = Ingredient.create(name: 'Red Potatoes', calories: 300)
+dough = Ingredient.create(name: 'Dough', calories: 100)
+cheese = Ingredient.create(name: 'Cheese', calories: 200)
+cashews = Ingredient.create(name: 'Cashews', calories: 200)
+bun = Ingredient.create(name: 'Bun', calories: 300)
+tortilla = Ingredient.create(name: 'Tortilla', calories: 400)
+sour_cream = Ingredient.create(name: 'Sour Cream', calories: 500)
+
+# Associate dishes and ingredients
+DishesIngredient.create(dish: pasta, ingredient: spaghetti)
+DishesIngredient.create(dish: pasta, ingredient: tomato_sauce)
+DishesIngredient.create(dish: roast_chicken, ingredient: chicken)
+DishesIngredient.create(dish: roast_chicken, ingredient: red_potatoes)
+DishesIngredient.create(dish: sweet_and_sour_chicken, ingredient: chicken)
+DishesIngredient.create(dish: sweet_and_sour_chicken, ingredient: dough)
+DishesIngredient.create(dish: sweet_and_sour_chicken, ingredient: cheese)
+DishesIngredient.create(dish: chicken_parm, ingredient: chicken)
+DishesIngredient.create(dish: chicken_parm, ingredient: tomato_sauce)
+DishesIngredient.create(dish: chicken_parm, ingredient: cheese)
+DishesIngredient.create(dish: pizza, ingredient: dough)
+DishesIngredient.create(dish: pizza, ingredient: cheese)
+DishesIngredient.create(dish: burger, ingredient: chicken)
+DishesIngredient.create(dish: burger, ingredient: bun)
+DishesIngredient.create(dish: burger, ingredient: cheese)
+DishesIngredient.create(dish: chicken_cashews, ingredient: chicken)
+DishesIngredient.create(dish: chicken_cashews, ingredient: dough)
+DishesIngredient.create(dish: chicken_cashews, ingredient: cashews)
+DishesIngredient.create(dish: chicken_tacos, ingredient: chicken)
+DishesIngredient.create(dish: chicken_tacos, ingredient: tortilla)
+DishesIngredient.create(dish: chicken_tacos, ingredient: sour_cream)
