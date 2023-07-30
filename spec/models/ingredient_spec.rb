@@ -10,8 +10,4 @@ RSpec.describe Ingredient, type: :model do
     it { should validate_presence_of :name }
     it { should validate_presence_of :calories }
   end
-
-  describe 'Instance Methods' do
-    
-  end
 end
