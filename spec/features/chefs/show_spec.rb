@@ -34,12 +34,14 @@ RSpec.describe "chef's show page", type: :feature do
 
       visit chef_path(chef)
 
-      expect(page).to have_content(ingredient_1.name)
-      expect(page).to have_content(ingredient_2.name)
-      expect(page).to have_content(ingredient_3.name)
-      expect(page).to have_content(ingredient_4.name)
-      expect(page).to have_content(ingredient_5.name)
-      expect(page).to have_content(ingredient_6.name)
+      expect(page).to have_link("Chefs Ingredients")
+
+      # expect(page).to have_content(ingredient_1.name)
+      # expect(page).to have_content(ingredient_2.name)
+      # expect(page).to have_content(ingredient_3.name)
+      # expect(page).to have_content(ingredient_4.name)
+      # expect(page).to have_content(ingredient_5.name)
+      # expect(page).to have_content(ingredient_6.name)
     end
   end
 end
