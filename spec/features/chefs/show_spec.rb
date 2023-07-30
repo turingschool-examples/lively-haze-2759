@@ -62,7 +62,7 @@ RSpec.describe "chef's show page", type: :feature do
       visit chef_path(chef)
 
       click_link "Chefs Ingredients"
-
+      save_and_open_page
       expect(page).to have_current_path(chef_ingredients_path(chef))
       expect(page).to have_content(ingredient_1.name)
       expect(page).to have_content(ingredient_2.name)
