@@ -47,7 +47,7 @@ RSpec.describe "dishes show page", type: :feature do
       dish_1.ingredients << ingredient_2
 
       visit dish_path(dish_1)
-
+      
       expect(page).to have_content(10)
       expect(page).to have_content("Derek Chavez")
     end
