@@ -1,12 +1,22 @@
 <h1><%= @dish.name %></h1>
 <p><strong>Description: </strong><%= @dish.description %></p>
 
+<div id="ingredient-list">
 <p><strong>Ingredients: </strong><% @dish.ingredients.each do |ingredient| %>
   <p><%= ingredient.name %></p>
   <p><%= ingredient.calories %></p>  
 <% end %>
+</div>
 
 <p><strong>Total Calories: </strong><%= @total_calories %></p>
 <h3><%= @dish.chef.name %></h3>
   
-
+<div id="add-ingredient">
+  <h3>Add an Ingredient</h3>
+  <%= form_with model: @dish_ingredient, url: dish_ingredients_path, local: true do |f| %>
+    <%= f.hidden_field :dish_id, value: @dish.id %>
+    <%= f.label :ingredient_id, 'Add Ingredient' %>
+    <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, prompt: 'Select Ingredient' %>
+    <%= f.submit "Submit" %>  
+  <% end %>
+</div>
