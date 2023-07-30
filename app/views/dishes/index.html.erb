@@ -1,0 +1,9 @@
+<h1>Select a Dish:</h1>
+</div>
+<div class="center-content" style="display: flex; justify-content: center; text-align: left;">
+  <ul style="text-align: left; padding-left: 0; margin: 0; width: fit-content;">
+    <% @dishes.each do |dish| %>
+      <li><%= link_to dish.name, dish_path(dish) %></li>
+    <% end %>
+  </ul>
+</div>
