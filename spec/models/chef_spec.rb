@@ -25,7 +25,7 @@ RSpec.describe Chef, type: :model do
   describe "#instance_methods" do
     describe "#ingredient_names" do
       it "can create a list of unique ingredient names" do
-        expect(@chef.ingredient_names).to eq([@ingredient_1.name, @ingredient_2.name, @ingredient_3.name])
+        expect(@chef.ingredient_names.sort).to eq([@ingredient_1.name, @ingredient_2.name, @ingredient_3.name, @ingredient_5.name].sort)
       end
     end
   end

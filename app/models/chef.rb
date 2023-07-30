@@ -4,5 +4,10 @@ class Chef < ApplicationRecord
    has_many :dishes
    has_many :ingredients, through: :dishes
 
-   
+
+   def ingredient_names
+      ingredients.select(:name)
+      .distinct
+      .pluck(:name)
+   end
 end

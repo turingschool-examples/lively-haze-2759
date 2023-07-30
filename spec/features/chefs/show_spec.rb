@@ -8,6 +8,9 @@ RSpec.describe "chef's show page", type: :feature do
     @ingredient_1 = @dish.ingredients.create!(name: "USDA Prime Beef Filet Mignon", calories: 227)
     @ingredient_2 = @dish.ingredients.create!(name: "Kosher Salt", calories: 1)
     @ingredient_3 = @dish.ingredients.create!(name: "Vegetable Oil", calories: 119)
+    # add salt and pepper to tast
+    @ingredient_4 = @dish.ingredients.create!(name: "Kosher Salt", calories: 1)
+    @ingredient_5 = @dish.ingredients.create!(name: "Pepper", calories: 0)
   end
 
   describe "as a visitor" do
