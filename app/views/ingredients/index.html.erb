@@ -1,0 +1,7 @@
+<h1><%= @chef.name %> uses the following ingredients:</h1>
+
+<ul></ul>
+  <% @chef.all_unique_ingredients.each do |ingredient| %>
+    <li><%= ingredient %></li>
+  <% end %>
+</ul>
