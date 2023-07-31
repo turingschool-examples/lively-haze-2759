@@ -7,11 +7,7 @@ class DishIngredientsController < ApplicationController
       flash[:alert] = 'This ingredient is already included in the dish'
     else
       @dish.ingredients << @ingredient
-      if @dish.save
-        flash[:notice] = 'Ingredient added successfully'
-      else
-        flash[:alert] = 'There was an error adding the ingredient'
-      end
+      flash[:notice] = 'Ingredient added successfully' if @dish.save
     end
 
     redirect_to dish_path(@dish)
