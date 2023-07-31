@@ -17,16 +17,17 @@ RSpec.describe 'Chefs Ingredients Index', type: :feature do
   it 'shows a unique list of names of all the ingredients that this chef uses' do
     visit chef_path(@chef1)
     click_link 'View Ingredients'
+    expect(current_path).to eq(chef_ingredients_path(@chef1))
 
-    expect(page).to have_content(@ingredient1.name)
-    expect(page).to have_content(@ingredient2.name)
-    expect(page).to have_content(@ingredient3.name)
-    expect(page).to have_content(@ingredient4.name)
+    @chef1.unique_ingredients.each do |ingredient|
+      expect(page).to have_content(ingredient.name)
+    end
   end
 
   it 'does not show duplicate ingredients' do
     visit chef_path(@chef1)
     click_link 'View Ingredients'
+    expect(current_path).to eq(chef_ingredients_path(@chef1))
 
     expect(page).to have_content(@ingredient1.name, count: 1)
     expect(page).to have_content(@ingredient2.name, count: 1)
@@ -37,6 +38,7 @@ RSpec.describe 'Chefs Ingredients Index', type: :feature do
   it 'does not show ingredients from other chefs' do
     visit chef_path(@chef1)
     click_link 'View Ingredients'
+    expect(current_path).to eq(chef_ingredients_path(@chef1))
 
     expect(page).to_not have_content(@ingredient5.name)
     expect(page).to_not have_content(@ingredient6.name)
