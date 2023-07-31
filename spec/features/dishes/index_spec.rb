@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Dishes Index' do
+RSpec.describe 'Dishes Index', type: :feature do
   before :each do
     load_test_data
   end
