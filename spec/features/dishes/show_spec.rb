@@ -73,4 +73,29 @@ RSpec.describe 'Dishes Index' do
     visit dish_path(@dish1)
     expect(page).to_not have_content(@chef2.name)
   end
+
+  # User Story 2
+  #   As a visitor
+  # When I visit a dish's show page
+  # I see a form to add an existing Ingredient to that Dish
+  # When I fill in the form with the ID of an Ingredient that exists in the database
+  # And I click Submit
+  # Then I am redirected to that dish's show page
+  # And I see that ingredient is now listed.
+
+  it 'has a form to add an existing ingredient to that dish' do
+    visit dish_path(@dish1)
+
+    expect(page).to have_content('Add Ingredient')
+    expect(page).to have_field('dish_ingredient_ingredient_id')
+    expect(page).to have_button('Add Ingredient')
+  end
+
+  it 'can add an existing ingredient to that dish' do
+    visit dish_path(@dish1)
+    fill_in 'dish_ingredient_ingredient_id', with: @ingredient3.id
+    click_button 'Add Ingredient'
+    expect(current_path).to eq(dish_path(@dish1))
+    expect(page).to have_content(@ingredient3.name)
+  end
 end
