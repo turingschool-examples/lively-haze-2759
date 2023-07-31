@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :dishes, only: %i[index show] do
-    resources :ingredients, only: [:create], controller: 'dishes/ingredients'
+    resources :dish_ingredients, only: [:create]
   end
 end
