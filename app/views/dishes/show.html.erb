@@ -5,4 +5,9 @@
 <%end%>
 <p>Made by <%= @dish.chef.name %>
 
+<%= form_with url: "/dishes/#{@dish.id}", method: :patch, local: true do |form|%>
+  <%= form.label "Add an ingredient" %>
+  <%= form.text_field :ingredient_id %>
+  <%= form.submit "Add Ingredient" %>
+<%end%>
 
