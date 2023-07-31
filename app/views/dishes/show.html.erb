@@ -7,3 +7,10 @@
   <% end %>
 </ul>
 <p>Chef: <%= @dish.chef.name %></p>
+<h2>Add Ingredient:</h2>
+<%= form_with(url: "/ingredient_dishes", method: :post, local: true) do |form| %>
+  <%= form.label "Ingredient id" %>
+  <%= form.text_field :ingredient_id, require: true %>
+  <%= form.hidden_field :dish_id , value: @dish.id %>
+  <%= form.submit "Submit" %>
+<% end %>

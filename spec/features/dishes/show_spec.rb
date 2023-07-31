@@ -48,4 +48,16 @@ RSpec.describe "When I visit a dish show page", type: :feature do
     expect(page).to have_content(@jeff.name)
     expect(page).to_not have_content(@greg.name)
   end
+
+  it "I see a form to add an existing ingredient to the dish" do
+    visit "dishes/#{@burger.id}"
+
+    expect(page).to have_content("Add Ingredient:")
+
+    fill_in :ingredient_id, with: "#{@beef.id}"
+    click_button "Submit"
+
+    expect(current_path).to eq("/dishes/#{@burger.id}")
+    expect(page).to have_content("#{@beef.name}")
+  end
 end
