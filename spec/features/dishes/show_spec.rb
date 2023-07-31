@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Dishes Show Happy Path' do
+RSpec.describe 'Dishes Show Happy Path', type: :feature do
   before :each do
     load_test_data
   end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   resources :chefs, only: %i[index show] do
-    resources :ingredients, only: [:index], controller: 'chefs/ingredients'
+    resources :ingredients, only: [:index], module: :chefs
   end
 
   resources :dishes, only: %i[index show] do
