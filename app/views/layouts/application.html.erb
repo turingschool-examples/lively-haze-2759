@@ -17,6 +17,12 @@
         <li><%= link_to "Chefs", chefs_path %></li>
       </ul>
     </nav>
+    <!-- Flash Messages -->
+    <div id="flash_messages">
+      <% flash.each do |type, message| %>
+        <div class="flash <%= type %>"><%= message %></div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
