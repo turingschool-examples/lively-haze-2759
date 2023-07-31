@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Chefs Show Happy Path', type: :feature do
+RSpec.describe 'Chefs Show', type: :feature do
   before :each do
     load_test_data
   end
