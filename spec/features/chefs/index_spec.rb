@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Chefs Index' do
+RSpec.describe 'Chefs Index', type: :feature do
   before :each do
     load_test_data
   end
@@ -13,7 +13,7 @@ RSpec.describe 'Chefs Index' do
   end
 
   it 'shows each chef with a link to its show page' do
-    visit chef_path
+    visit chefs_path
     Chef.all.each do |chef|
       expect(page).to have_link(chef.name, href: chef_path(chef))
     end
