@@ -16,7 +16,7 @@ RSpec.describe Chef, type: :model do
   describe 'instance methods' do
     it '#unique_ingredients' do
       unique_ingredients = @chef1.unique_ingredients
-      puts unique_ingredients.to_a  # outputs the actual contents of unique_ingredients
+
       expect(unique_ingredients).to all(be_an Ingredient)
       expect(unique_ingredients).to contain_exactly(@ingredient1, @ingredient2, @ingredient3, @ingredient4)
     end
