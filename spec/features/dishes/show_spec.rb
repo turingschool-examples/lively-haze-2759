@@ -67,4 +67,12 @@ describe 'Dishes Show Sad Path' do
     expect(current_path).to eq(dish_path(@dish1))
     expect(page).to have_content('This ingredient is already included in the dish')
   end
+
+  it 'shows an error message if the ingredient does not exist' do
+    visit dish_path(@dish1)
+    fill_in 'dish_ingredient_ingredient_id', with: -1
+    click_button 'Add Ingredient'
+    expect(current_path).to eq(dish_path(@dish1))
+    expect(page).to have_content('This ingredient does not exist')
+  end
 end
