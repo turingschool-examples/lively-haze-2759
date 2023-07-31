@@ -1,6 +1,6 @@
 def test_data
-  @chef_1 = Chef.create!("Gordon Ramsey")
-  @chef_2 = Chef.create!("Paul Hollywood")
+  @chef_1 = Chef.create!(name: "Gordon Ramsey")
+  @chef_2 = Chef.create!(name: "Paul Hollywood")
 
   @risotto = @chef_1.dishes.create!(name: "Mushroom Risotto", description: "Creamy Arborio Rice with Mushrooms")
   @bw = @chef_1.dishes.create!(name: "Beef Wellington", description: "Steak and Carbs; What More Could You Want?")
@@ -12,10 +12,10 @@ def test_data
   @ingredient_3 = Ingredient.create!(name: "Pastry", calories: 450)
   @ingredient_4 = Ingredient.create!(name: "Zucchini", calories: 50)
 
-  @dish_ingredient_1 = DishIngredient.create!(dish_id: @dish_1.id, ingredient_id: @ingredient_1.id)
-  @dish_ingredient_2 = DishIngredient.create!(dish_id: @dish_2.id, ingredient_id: @ingredient_2.id)
-  @dish_ingredient_3 = DishIngredient.create!(dish_id: @dish_3.id, ingredient_id: @ingredient_3.id)
-  @dish_ingredient_4 = DishIngredient.create!(dish_id: @dish_4.id, ingredient_id: @ingredient_4.id)
+  DishIngredient.create!(dish_id: @risotto.id, ingredient_id: @ingredient_1.id)
+  DishIngredient.create!(dish_id: @bw.id, ingredient_id: @ingredient_2.id)
+  DishIngredient.create!(dish_id: @tart.id, ingredient_id: @ingredient_3.id)
+  DishIngredient.create!(dish_id: @rat.id, ingredient_id: @ingredient_4.id)
 end
 
 RSpec.configure do |config|
