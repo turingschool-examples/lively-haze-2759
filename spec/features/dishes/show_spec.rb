@@ -56,5 +56,32 @@ RSpec.describe "Dish #show page", type: :feature do
     it "shows the chef's name" do
       expect(page).to have_content("Dish curated by Chef #{@dish_1.chef.name}")
     end
+
+    describe "see a form to add an existing Ingredient to that Dish" do
+      it "has a form to add an existing ingredient" do
+        expect(page).to have_css("#add-ingredient")
+        expect(page).to have_button("Add Ingredient")
+      end
+
+      it "When filled in, will redirect to the dish show page and the ingredient now shows" do
+        expect(page).to_not have_content(@garlic.name)
+
+        within("#add-ingredient") do
+          fill_in :ingredient_id, with: @garlic.id
+          click_button "Add Ingredient"
+        end
+        
+        expect(current_path).to eq(dish_path(@dish_1))
+        expect(page).to have_content(@garlic.name)
+      end
+
+      it "Shows error message if an invalid id is used" do
+        within("#add-ingredient") do
+          fill_in :ingredient_id, with: 100000
+          click_button "Add Ingredient"
+        end
+        expect(page).to have_content("Validation failed: Ingredient must exist")
+      end
+    end
   end
 end
