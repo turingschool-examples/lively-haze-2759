@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe "When I visit a dish show page", type: :feature do
   before do
     @jeff = Chef.create!(name: "Chef Jeff")
+    @greg = Chef.create!(name: "Chef Greg")
     @burger = @jeff.dishes.create!(name: "Borger", description: "it big")
     @pasta = @jeff.dishes.create!(name: "Limone", description: "creamy and lemony")
     @bun = @burger.ingredients.create!(name: "bun", calories: 150)
@@ -45,5 +46,6 @@ RSpec.describe "When I visit a dish show page", type: :feature do
     visit "dishes/#{@burger.id}"
 
     expect(page).to have_content(@jeff.name)
+    expect(page).to_not have_content(@greg.name)
   end
 end
