@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :chefs, only: [:index, :show] do
-    resources :dishes, only: [:show, :edit, :update]
+    resources :dishes, only: [:show] do
+      resources :ingredients, only: :create
+    end
     resources :ingredients, only: :show
+    
   end
 end
