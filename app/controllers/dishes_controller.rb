@@ -7,7 +7,7 @@ class DishesController < ApplicationController
     @dish_ingredient = DishIngredient.find_by(ingredient_id: params[:ingredient_id])
     @dish_ingredient.update!(ingredient_id: params[:ingredient_id])
     redirect_to dish_path
-  end
+  end #I dont know if this button is supposed to be an update or a create or a new or?!?!?!
 
   # def create
   #   require 'pry'; binding.pry
