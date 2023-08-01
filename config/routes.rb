@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get "/dishes/:id", to: "dishes#show", as: "dish"
+  post '/dishes/:id/add_ingredient', to: 'dishes#add_ingredient', as: 'add_ingredient_to_dish'
 end

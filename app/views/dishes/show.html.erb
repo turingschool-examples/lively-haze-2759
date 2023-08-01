@@ -8,4 +8,13 @@
       <li><%= ingredient.name %></li>
       <li><%= ingredient.calories %></li>
     <% end %>
+  </ul>
+</section>
+
+<h4>"Add an Ingredient to this Dish"</h4>
+<%= form_with(url: add_ingredient_to_dish_path(@dishes), method: :post, local: true) do |f| %>
+  <%= f.label :ingredient_id %>
+  <%= f.text_field :ingredient_id, name: 'dish[ingredient_id]' %>
+  <%= f.submit "Submit" %>
+<% end %>
 
