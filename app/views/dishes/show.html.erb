@@ -5,11 +5,25 @@
 <div id="ingredients">
   <h2>Ingredients</h2>
   <% @dish.ingredients.each do |ingredient| %>
-    <p><%= ingredient.name %></p>
+    <p>Name: <%= ingredient.name %></p>
   <% end %>
+</div>
+
+<div id="calorie-count">
+  <h2>Calories</h2>
+    <p>Total Calorie Count: <%= @dish.calorie_count %></p>
 </div>
 
 <div id="chef">
   <h2>Chef</h2>
   <p>Name: <%= @dish.chef.name %></p>
+</div>
+
+<div id="add-ingredient">
+  <h2>Add an Ingredient</h2>
+  <%= form_with(model: @dish, url: dish_path(@dish), method: :patch) do |form| %>
+    <%= form.label :ingredient_id, name: "dish[ingredient_id]" %>
+    <%= form.text_field :ingredient_id %>
+    <%= form.submit "Add Ingredient" %>
+  <% end %>
 </div>
