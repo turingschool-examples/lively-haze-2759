@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   post 'dishes/:id', to: 'dishes#add_ingredient', as: :add_ingredient_to_dish
 
   resources :dishes, only: [:show]
+  resources :chefs, only: [:show]
+  namespace :chefs do
+    resources :ingredients, only: [:index]
+  end
 
 end

@@ -46,7 +46,7 @@ describe "Dish Show page" do
         visit dish_path("#{@dish_1.id}")
         fill_in "ingredient_id", with: "#{@house_salad.id}"
         click_button "Submit"
-        save_and_open_page
+        
         
         expect(current_path).to eq(dish_path("#{@dish_1.id}"))
         expect(page).to have_content("#{@house_salad.name}")
