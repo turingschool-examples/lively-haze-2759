@@ -1,0 +1,8 @@
+<h1><%= @dish.name %></h1>
+<%= @dish.description %>
+<br>
+<% @dish.ingredients.each do |ingredient| %>
+  <p><%= ingredient.name %></p>
+<% end %>
+<p><%= @dish.total_calories %></p>
+<p><%= @dish.chef.name %></p>
