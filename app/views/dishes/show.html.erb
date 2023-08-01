@@ -1,0 +1,26 @@
+
+<div id="dish-info">
+  <h1>Dish: <%= @dish.name %></h1>
+  <p>Description: <%= @dish.description %></p>
+
+  <h3>Chef: <%= @dish.chef.name %></h3>
+
+  <h3>Ingredients:</h3>
+  <ul>
+    <% @dish.ingredients.each do |i| %>
+    <li><%= i.name %>, Calories: <%= i.calories %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div id="add-ingredient">
+
+  <h3>Add Ingredients</h3>
+  
+  <%= form_with url: "/dishes/#{@dish.id}", method: :post, local: true do |form| %>
+		<p><%= form.label :ingredient_id, "Ingredient Id:" %><br></p>
+		<p><%= form.text_field :ingredient_id %></p>
+
+    <p><%= form.submit "Add Ingredient"%>
+  <% end %>
+</div>
