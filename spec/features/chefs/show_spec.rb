@@ -1,14 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'rails_helper'
+
+RSpec.describe "Chefs show page", type: :feature do
+  before :each do
     @chef_1 = Chef.create!(name: "That One Guy")
       
     @spaget = @chef_1.dishes.create!(name: "Noodles", description: "very good much wow")
-    @steak = @chef_1.dishes.create!(name: "Noodles", description: "very good much wow")
+    @steak = @chef_1.dishes.create!(name: "Steak", description: "mmmmm")
     
     @sauce = Ingredient.create!(name: "Tomato Sauce", calories: 1234)
     @carrot = Ingredient.create!(name: "Carrots", calories: 12)
@@ -24,8 +21,28 @@
     @spaget.ingredients << @carrot
     @spaget.ingredients << @beef
     @spaget.ingredients << @zuc
-    @spaget.ingredients << @mash
 
     @steak.ingredients << @meat
     @steak.ingredients << @mash
     @steak.ingredients << @butter
+    @steak.ingredients << @butter
+    @steak.ingredients << @butter
+  end
+
+  describe "When I visit a chef's show page" do 
+    it "Has a link to view a list of all ingredients" do 
+      visit chef_path(@chef_1)
+
+      expect(page).to have_link("View all Ingredients")
+    end
+
+    it "Has a link to view a list of all ingredient when clicked it takes me to ingredients index page" do 
+      visit chef_path(@chef_1)
+
+      expect(current_path).to eq(chef_path(@chef_1))
+
+      click_link("View all Ingredients")
+      expect(current_path).to eq(chef_ingredients_path(@chef_1))
+    end
+  end
+end
