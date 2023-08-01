@@ -34,6 +34,8 @@ RSpec.describe "dishes" do
         expect(page).to_not have_content("Janayah")
       end
 
+      save_and_open_page
+
       within "#Ingredients" do
         expect(page).to have_content(@ingredient_1.name)
         expect(page).to have_content(@ingredient_2.name)
