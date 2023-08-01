@@ -1,5 +1,6 @@
 <div id="dish_info">
   <h1><%= @dish.name %></h1>
+  <b>Description:</b>
   <p><%= @dish.description %></p>
 </div>
 
@@ -19,4 +20,15 @@
 <div id="dish_chef">
   <h3>Chef</h3>
   <p><%= @dish.chef.name %></p>
+</div>
+
+<div id="new_dish_ingredient">
+  <h2>Add Ingredient to Dish</h2>
+  <p>Enter an ingredient ID to add that ingredient to the dish</p>
+
+  <%= form_with model: DishIngredient.new, local: true do |f| %>
+    <%= f.text_field :ingredient_id %>
+    <%= f.hidden_field :dish_id, value: @dish.id %>
+    <%= f.submit "Add Ingredient" %>
+  <% end %>
 </div>
