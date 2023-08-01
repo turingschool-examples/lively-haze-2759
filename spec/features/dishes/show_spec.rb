@@ -34,8 +34,6 @@ RSpec.describe "dishes" do
         expect(page).to_not have_content("Janayah")
       end
 
-      save_and_open_page
-
       within "#Ingredients" do
         expect(page).to have_content(@ingredient_1.name)
         expect(page).to have_content(@ingredient_2.name)
@@ -43,5 +41,28 @@ RSpec.describe "dishes" do
         expect(page).to_not have_content(@ingredient_4.name)
       end
     end
+
+    it "has a form to add an ingredient to the dish" do
+      visit dish_path(@dish_1)
+
+      within "#Ingredients" do
+        expect(page).to_not have_content(@ingredient_4.name)
+      end
+      
+      within "#Add_ingredient" do
+        expect(page).to have_content("Please enter a valid ingredient ID:")
+        fill_in("ingredient_id", with: @ingredient_4.id)
+        click_button("Submit")
+        expect(current_path).to eq(dish_path(@dish_1))
+      end
+      
+      within "#Ingredients" do
+        expect(page).to have_content(@ingredient_4.name)
+        expect(page).to have_content(@ingredient_4.calories)
+        expect(page).to have_content(@ingredient_2.name)
+        expect(page).to have_content(@ingredient_1.name)
+        expect(page).to_not have_content(@ingredient_3.name)
+      end
+    end  
   end
 end
