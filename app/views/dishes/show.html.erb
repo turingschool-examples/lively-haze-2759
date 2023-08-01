@@ -18,7 +18,7 @@
 </div>
 
 <div id="Add_ingredient">
-<%= form_with url: dish_ingredients_path do |form| %>
+<%= form_with url: dish_dish_ingredients_path(@dish) do |form| %>
     <p> <%= form.label :ingredient_id, "Please enter a valid ingredient ID:" %> </p>
     <p> <%= form.text_area :ingredient_id %> </p>
     <p> <%= form.submit "Submit" %> </p>

@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # Routes for dishes
-  resources :dishes, only: [:index, :show]
+  resources :dishes, only: [:index, :show] do
+    resources :dish_ingredients, only: [:create]
+  end
 end
