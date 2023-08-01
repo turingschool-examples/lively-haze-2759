@@ -1,0 +1,9 @@
+<h1>Chef Details</h1>
+<p>Name: <%= @chef.name %></p>
+
+<div id="popular-ingredients">
+  <h2>Most Popular Ingredients</h2>
+    <% @popular_ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+    <% end %>
+</div>
