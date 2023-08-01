@@ -3,4 +3,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  # Routes for dishes
+  resources :dishes, only: [:index, :show] do
+    resources :dish_ingredients, only: [:create]
+  end
+
+  resources :chefs, only: [:index, :show] do
+    resources :ingredients, only: [:index], controller: 'chefs/ingredients'
+  end
+
 end
