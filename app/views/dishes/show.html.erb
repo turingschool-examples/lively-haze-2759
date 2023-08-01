@@ -1,0 +1,25 @@
+<h1>
+  <%= @dish.name %> by <%= @dish.chef.name %>
+</h1>
+<p>
+  <%= @dish.description %>
+</p>
+<h3>Ingredients</h3>
+<p>
+  <ol>
+    <% @dish.ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+    <% end %>
+  </ol>
+</p>
+<p>
+  Total calories: <%= @dish.total_calories %> + condiments
+</p>
+<h2>Add new ingredient</h2>
+<p>
+  <%= form_with model: @dish_ingredient, id: "add_ingredient_form", local: true do |form| %>
+    <%= form.label :ingredient_id %><%= form.text_field :ingredient_id %><br />
+    <%= form.submit value: "Submit"%>
+  <% end %>
+</p>
+
