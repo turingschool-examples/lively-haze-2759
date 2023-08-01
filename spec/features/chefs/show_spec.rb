@@ -56,9 +56,10 @@ RSpec.describe "Chefs" do
 
       within "#Top_ingredients" do
         expect(page).to have_content("Top Three Ingredients")
-        expect(page).to have_content(@ingredient_6.name)
-        expect(page).to have_content(@ingredient_7.name)
-        expect(page).to have_content(@ingredient_5.name)
+        expect(@ingredient_6.name).to appear_before(@ingredient_7.name)
+        expect(@ingredient_7.name).to appear_before(@ingredient_5.name)
+        expect(page).to_not have_content(@ingredient_4.name)
+        expect(page).to_not have_content(@ingredient_3.name)
       end
     end
   end
