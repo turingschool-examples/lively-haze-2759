@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "dishes show page", type: :feature do
+RSpec.describe "dish show page", type: :feature do
 
 
   # let!(:chef_1) { Chef.create!(name: "andi") }
@@ -38,10 +38,30 @@ RSpec.describe "dishes show page", type: :feature do
 
     expect(page).to have_content(dish_1.name)
     expect(page).to have_content(dish_1.description)
+    expect(page).to have_content(100)
     expect(page).to have_content(ingredient_1.name)
     expect(page).to have_content(ingredient_1.calories)
     expect(page).to have_content(chef_1.name)
     expect(page).to_not have_content(dish_2.description)
+  end
+
+  it "provides a form for adding an existing ingredient to dish" do
+    chef_1 = Chef.create!(name: "andi")
+    chef_2 = Chef.create!(name: "seth")
+    dish_1 = chef_1.dishes.create!(name: "gumbo", description: "seafood") 
+    dish_2 = chef_2.dishes.create!(name: "bread", description: "flour") 
+    ingredient_1 = Ingredient.create!(name: "shrimp", calories: 100) 
+    ingredient_2 = Ingredient.create!(name: "sugar", calories: 100) 
+    dish_ingredient_1 = DishIngredient.create!(dish_id: dish_1.id, ingredient_id: ingredient_1.id) 
+
+    visit dish_path(dish_1)
+
+    expect(page).to have_field("Ingredient")
+    fill_in "Ingredient", with: ingredient_2.id
+    click_button "Submit"
+    expect(current_path).to eq dish_path(dish_1)
+    expect(page).to have_content(ingredient_2.name)
+    expect(page).to have_content(200)
   end
 
 
