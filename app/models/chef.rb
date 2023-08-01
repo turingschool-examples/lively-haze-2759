@@ -6,4 +6,12 @@ class Chef < ApplicationRecord
    def distinct_ingredients
     ingredients.distinct
    end
+
+   def top_ingredients
+    ingredients
+      .joins(:dish_ingredients)
+      .group('ingredients.id')
+      .order('COUNT(dish_ingredients.id) DESC')
+      .limit(3)
+  end
 end
