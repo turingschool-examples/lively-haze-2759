@@ -7,13 +7,13 @@ class DishesController < ApplicationController
   def create
     #require 'pry'; binding.pry
     @ingredient = Ingredient.new(ingredient_params)
-    
+    #require 'pry'; binding.pry
     @ingredient.save
 
     redirect_to "/dishes/#{params[:id].to_i}"
   end
 
   def ingredient_params
-    params.permit(:name, :calories)
+    params.permit(:name, :calories, :id)
   end
 end

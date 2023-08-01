@@ -6,7 +6,7 @@ class Chef < ApplicationRecord
    def ingredient_lister
       all_ingredients = []
       dishes.each do |dish|
-         dish.ingredients.each do |ingredient|
+         dish.ingredients.distinct.each do |ingredient|
             all_ingredients << ingredient.name
          end
       end

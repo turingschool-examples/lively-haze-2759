@@ -52,7 +52,7 @@ RSpec.describe 'the dishes show page' do
       fill_in "calories", with: 150
       #save_and_open_page
       click_button('Save')
-      save_and_open_page
+      #save_and_open_page
       expect(current_path).to eq("/dishes/#{dish1.id}")
       
       expect(page).to have_content("Water")
