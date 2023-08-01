@@ -92,3 +92,37 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def load_test_data
+  @chef_1 = Chef.create!(name:"Billy Bob")
+  @chef_2 = Chef.create!(name:"Timmy Bob")
+  @dish_1 = @chef_1.dishes.create!(name:"Crawfish etouffee", description: "Its etouffe")
+  @dish_2 = @chef_1.dishes.create!(name:"Red Beans and Rice", description: "red beans and rice")
+  @dish_3 = @chef_1.dishes.create!(name:"Tacos", description: "they are tacos")
+  @dish_4 = @chef_1.dishes.create!(name:"Pizza", description: "its a pizza")
+  @dish_5 = @chef_2.dishes.create!(name:"Fried Fish", description: "fried the fish")
+  @dish_6 = @chef_2.dishes.create!(name:"Nachos", description: "nachos")
+  @dish_7 = @chef_2.dishes.create!(name:"Fried Chicken", description: "fried the chicken")
+
+  @ingredient_1 = @dish_1.ingredients.create!(name:"crawfish", calories: 50)
+  @ingredient_2= @dish_1.ingredients.create!(name:"rice", calories: 120)
+  @ingredient_3 = @dish_1.ingredients.create!(name:"tomatos", calories: 130)
+  @ingredient_4 = @dish_2.ingredients.create!(name:"beans", calories: 200)
+  @ingredient_5 = @dish_2.ingredients.create!(name:"rice", calories: 550)
+  @ingredient_6 = @dish_2.ingredients.create!(name:"sasuage", calories: 250)
+  @ingredient_7 = @dish_3.ingredients.create!(name:"taco shell", calories: 100)
+  @ingredient_8 = @dish_3.ingredients.create!(name:"meat", calories: 200)
+  @ingredient_9 = @dish_3.ingredients.create!(name:"cheese", calories: 100)
+  @ingredient_10 = @dish_4.ingredients.create!(name:"pizza dough", calories: 250)
+  @ingredient_11 = @dish_4.ingredients.create!(name:"pizza sauce", calories: 200)
+  @ingredient_12 = @dish_4.ingredients.create!(name:"cheese", calories: 150)
+  @ingredient_13 = @dish_5.ingredients.create!(name:"fish", calories: 500)
+  @ingredient_14 = @dish_5.ingredients.create!(name:"eggs", calories: 500)
+  @ingredient_15 = @dish_5.ingredients.create!(name:"fish fry", calories: 100)
+  @ingredient_16 = @dish_6.ingredients.create!(name:"chips", calories: 220)
+  @ingredient_17 = @dish_6.ingredients.create!(name:"cheese", calories: 220)
+  @ingredient_18 = @dish_6.ingredients.create!(name:"salsa", calories: 150)
+  @ingredient_19 = @dish_7.ingredients.create!(name:"chicken", calories: 200)
+  @ingredient_20 = @dish_7.ingredients.create!(name:"eggs", calories: 100)
+  @ingredient_21 = @dish_7.ingredients.create!(name:"chicken batter", calories: 120)
+end
