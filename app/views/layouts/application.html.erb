@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
+    <!-- Main Menu -->
+    <nav class="main-menu">
+      <ul>
+        <li><%= link_to "Welcome Page", root_path %></li>
+        <li><%= link_to "Dishes", dishes_path %></li>
+        <li><%= link_to "Chefs", chefs_path %></li>
+      </ul>
+    </nav>
+    <!-- Flash Messages -->
+    <div id="flash_messages">
+      <% flash.each do |type, message| %>
+        <div class="flash <%= type %>"><%= message %></div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,10 @@
+<table class="show-table">
+  <tr>
+    <th>Name</th>
+    <th>Ingredients Used</th>
+  </tr>
+  <tr>
+    <td><%= @chef.name %></td>
+    <td><%= link_to 'View Ingredients', chef_ingredients_path(@chef) %></td>
+  </tr>
+</table>

@@ -1,0 +1,9 @@
+<h1>Select a Chef:</h1>
+</div>
+<div class="center-content" style="display: flex; justify-content: center; text-align: left;">
+  <ul style="text-align: left; padding-left: 0; margin: 0; width: fit-content;">
+    <% @chefs.each do |chef| %>
+      <li><%= link_to chef.name, chef_path(chef) %></li>
+    <% end %>
+  </ul>
+</div>
