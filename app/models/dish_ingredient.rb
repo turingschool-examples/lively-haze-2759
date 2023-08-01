@@ -1,4 +1,5 @@
 class DishIngredient < ApplicationRecord
-  validates_presence_of :name
+  belongs_to :dish
+  belongs_to :ingredient
   
 end
