@@ -12,14 +12,15 @@ RSpec.describe "The Dish Show Page" do
     DishIngredient.create!(dish: @dish, ingredient: @cheese)
   end
 
+  # User Story 1
   it 'shows the dish name and description' do
-    puts @dish.inspect
     visit dishes_path(@dish)
     save_and_open_page
     expect(page).to have_content("Pizza")
     expect(page).to have_content("the good good")
   end
 
+  # User Story 1
   it 'shows the dish ingredients' do
     visit dishes_path(@dish.id)
     expect(page).to have_content("Dough")
@@ -27,11 +28,13 @@ RSpec.describe "The Dish Show Page" do
     expect(page).to have_content("Cheese")
   end
 
+  # User Story 1
   it 'shows the total calories of the dish' do
     visit dishes_path(@dish.id)
     expect(page).to have_content("Total: 631 calories")
   end
 
+  # User Story 1
   it 'shows the chefs name' do
     visit dishes_path(@dish.id)
     expect(page).to have_content("Chef: King Charles")
