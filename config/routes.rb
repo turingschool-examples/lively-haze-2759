@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   resources :dishes, only: [:index, :show] do
     resources :dish_ingredients, only: [:create]
   end
+
+  resources :chefs, only: [:index, :show] do
+    resources :ingredients, only: [:index]
+  end
+
 end

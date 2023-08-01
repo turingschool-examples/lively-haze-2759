@@ -26,18 +26,14 @@ RSpec.describe "Chefs" do
     it "has a link to view a list of all ingredients used by chef" do
       visit chef_path(@chef_1)
 
-      within "#Facts" do
-        expect(page).to have_content(@chef_1.name)
-        click_link("Ingredients")
-        expect(current_path).to eq(chef_ingredients_path(@chef_1))
-      end
+      expect(page).to have_content(@chef_1.name)
+      click_link("Ingredients")
+      expect(current_path).to eq(chef_ingredients_path(@chef_1))
 
-      within "#Ingredients" do
-        expect(page).to have_content("#{@chef_1.name}'s Staple Ingredients")
-        expect(page).to have_content(@ingredient_1.name)
-        expect(page).to have_content(@ingredient_2.name)
-        expect(page).to_not have_content(@ingredient_2.name).twice
-      end
+      expect(page).to have_content("#{@chef_1.name}'s Staple Ingredients")
+      expect(page).to have_content(@ingredient_1.name)
+      expect(page).to have_content(@ingredient_2.name)
+      expect(page).to_not have_content(@ingredient_2.name).twice
     end
   end
 end
