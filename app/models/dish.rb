@@ -8,4 +8,7 @@ class Dish < ApplicationRecord
     ingredients.sum(:calories)
   end
 
+  def available_ingredients
+    Ingredient.where.not(id: ingredients.pluck(:id)).pluck(:name, :id)
+  end
 end

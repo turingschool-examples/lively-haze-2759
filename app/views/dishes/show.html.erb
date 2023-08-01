@@ -11,3 +11,11 @@
   Total: <%= @dish.total_calories %> calories
 </div>
 
+<div>
+  <h3>Add an Existing Ingredient</h3>
+  <%= form_with url: dish_ingredients_path(@dish), method: :post do |f| %>
+    <%= f.label :ingredient_id, "Select an Ingredient to Add:" %>
+    <%= f.select :ingredient_id, options_for_select(@dish.available_ingredients) %>
+    <%= f.submit "Add Ingredient" %>
+  <% end %>
+</div>
