@@ -13,6 +13,10 @@ RSpec.describe "Dish show page" do
     @ramen.ingredients.create!(name: "Green Onion", calories: 5)
     @ramen.ingredients.create!(name: "Chicken Stock", calories: 86)
     @ramen.ingredients.create!(name: "Ramen Wheat Noodles", calories: 200)
+
+    @egg = Ingredient.create!(name: "Egg", calories: 78)
+
+    visit "/dishes/#{@ramen.id}"
   end
 
   #   Story 1 of 3
@@ -24,15 +28,11 @@ RSpec.describe "Dish show page" do
   # And I see the chef's name.
 
   it "displays dish name and description" do
-    visit "/dishes/#{@ramen.id}"
-
     expect(page).to have_content("Ramen")
     expect(page).to have_content("A comforting and easy to make ramen!")
   end
 
   it "has a list of ingredients" do
-    visit "/dishes/#{@ramen.id}"
-
     expect(page).to have_content("Chicken Breasts")
     expect(page).to have_content("Ginger")
     expect(page).to have_content("Garlic")
@@ -45,14 +45,34 @@ RSpec.describe "Dish show page" do
   end
 
   it "has a total calories" do
-    visit "/dishes/#{@ramen.id}"
-
     expect(page).to have_content("Calories: 700")
   end
 
   it "has chef's name" do
-    visit "/dishes/#{@ramen.id}"
-
     expect(page).to have_content("Chef: Wakako Okada")
   end
+
+
+
+  # Story 2 of 3
+
+  # As a visitor
+  # When I visit a dish's show page
+  # I see a form to add an existing Ingredient to that Dish
+  # When I fill in the form with the ID of an Ingredient that exists in the database
+  # And I click Submit
+  # Then I am redirected to that dish's show page
+  # And I see that ingredient is now listed. 
+
+  it "has form to add ingredient" do
+    expect(page).to have_field(:dish_add_ingredient)
+
+    fill_in(:dish_add_ingredient, with: @egg.id)
+    click_button("Add Ingredient")
+
+    expect(current_path).to eq(dish_path(@ramen))
+    expect(page).to have_content("Egg")
+    expect(page).to have_content("Calories: 778")
+  end
+
 end
