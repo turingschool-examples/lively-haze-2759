@@ -2,10 +2,10 @@ require "rails_helper"
 
 describe "Dish Show page" do
   before(:each) do
-    @dish_1 = Dish.create!(name: "Chicken Tenders Plate", description: "Smaller portion of the Chicken Tenders Platter. Crispy breaded chicken tenders are a grill and bar classic. Served with choice of dipping sauce. Shown with classic fries.")
-    @fries_1 = Ingrediant.create!(name: "Fries", calories: 400)
-    @tenders_sm = Ingrediant.create!(name: "Chicken Tenders small", calories: 1080)
     @chef_1 = Chef.create!(name: "Wolfgang Puck")
+    @dish_1 = Dish.create!(name: "Chicken Tenders Plate", description: "Smaller portion of the Chicken Tenders Platter. Crispy breaded chicken tenders are a grill and bar classic. Served with choice of dipping sauce. Shown with classic fries.", chef_id: "#{@chef_1.id}")
+    @fries_1 = Ingredient.create!(name: "Fries", calories: 400)
+    @tenders_sm = Ingredient.create!(name: "Chicken Tenders small", calories: 1080)
   end
   describe "As a visitor When I visit a dish's show page" do
     it "I see the dish’s name and description" do
