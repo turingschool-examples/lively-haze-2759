@@ -57,6 +57,7 @@ group :development, :test do
   gem "launchy"
   gem "shoulda-matchers"
   gem "rspec-rails"
+  gem "faker"
 end
 
 group :development do
