@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :chefs, only: [:show] do
+    member do
+      get 'ingredients_index'
+    end
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :dishes, only: [:show] do
+    member do
+      post 'create_dish_ingredient'
+    end
+  end
 end
