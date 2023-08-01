@@ -6,3 +6,9 @@
 <% @dish.ingredients.each do |ingredient| %>
   <%= ingredient.name %><br>
 <% end %>
+
+<%= form_with model: @dish, local: true do |form| %>
+  <%= form.label :add_ingredient %>
+  <%= form.text_field :add_ingredient %>
+  <%= form.submit "Add Ingredient" %>
+<% end %>
