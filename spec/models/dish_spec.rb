@@ -25,5 +25,4 @@ RSpec.describe Dish, type: :model do
       end
     end
   end
-
 end

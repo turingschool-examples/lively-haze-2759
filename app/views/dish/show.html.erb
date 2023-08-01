@@ -11,3 +11,9 @@
 <p>Total Calories: <%= @dish.total_calories %></p>
 
 <p>Chef's Name: <%= @chef.name %></p>
+
+<p><%= form_with model: @dish do |form| %>
+  <%= form.label :id %>
+  <%= form.text_field :id %>
+  <%= form.submit %>
+<% end %></p>
