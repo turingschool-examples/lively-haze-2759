@@ -3,11 +3,11 @@
 
 <h2>Ingredients:</h2>
 <ul>
-  <% @dish.ingredients.each do |ingredient| %>
+  <% @ingredients.each do |ingredient| %>
     <li><%= ingredient.name %></li>
   <% end %>
 </ul>
 
 <p>Total Calories: <%= @dish.total_calories %></p>
 
-<p>Chef's Name: <%= @dish.chef.name %></p>
+<p>Chef's Name: <%= @chef.name %></p>
