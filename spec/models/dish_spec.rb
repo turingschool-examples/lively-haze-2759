@@ -39,5 +39,4 @@ RSpec.describe Dish, type: :model do
       expect(@dish_1.total_calories).to eq(625)
     end
   end
-
 end
