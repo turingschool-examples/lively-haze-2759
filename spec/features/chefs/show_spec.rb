@@ -18,7 +18,7 @@ RSpec.describe "Chef show page" do
 
   it "shows chef's name" do
     expect(page).to have_content("Wakako Okada")
-    expect(page).to have_link("Ingredients I use", href: "/chefs/#{@chef_id}/ingredients")
+    expect(page).to have_link("Ingredients I use", href: "/chefs/#{@wakako.id}/ingredients")
   end
 
 end
